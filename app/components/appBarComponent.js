@@ -5,13 +5,17 @@ import colors from "./colors";
 import IconButton from "./iconButton";
 import TextComponent from "./textComponent";
 
-function AppBarComponent({ searchActive, onPress, textHeader }) {
+function AppBarComponent({ searchActive, onPress, textHeader, onChangeText }) {
   return (
     <View style={styles.appBar}>
       <IconButton title="menu" color={colors.medium} />
 
       {searchActive ? (
-        <TextInput placeholder="search" style={{ width: 200 }} />
+        <TextInput
+          placeholder="search"
+          style={{ width: 200 }}
+          onChangeText={onChangeText}
+        />
       ) : (
         textHeader
       )}

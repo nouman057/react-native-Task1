@@ -1,12 +1,11 @@
 import client from "./gitClient";
 
 const endpoint = "/users";
-const endpointTwo = "/code";
 
-const getUsers = () =>
+const getUsers = (page) =>
   client.get(endpoint, {
     since: 0,
-    per_page: 30,
+    per_page: 10,
   });
 
 export default { getUsers };
