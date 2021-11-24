@@ -33,7 +33,7 @@ function TaskScreen(props) {
   // };
 
   return (
-    <Screen>
+    <Screen style={styles.screen}>
       <AppBarComponent
         searchActive={searchActive}
         textHeader={<TextComponent>Contacts</TextComponent>}
@@ -61,5 +61,10 @@ function TaskScreen(props) {
     </Screen>
   );
 }
+const styles = StyleSheet.create({
+  screen: {
+    overflow: "hidden",
+  },
+});
 
 export default TaskScreen;

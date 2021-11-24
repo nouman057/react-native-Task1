@@ -22,7 +22,12 @@ function ListItem({
     <TouchableHighlight underlayColor={colors.light} onPress={onPress}>
       <View style={styles.container}>
         {IconComponent}
-        {image && <Image style={styles.image} source={{ uri: image }} />}
+        {image && (
+          <View style={styles.imageBorder}>
+            <Image style={styles.image} source={{ uri: image }} />
+            <View style={styles.redCircle}></View>
+          </View>
+        )}
 
         <View style={styles.detailsContainer}>
           <TextComponent numberOfLines={1} style={styles.title}>
@@ -51,9 +56,20 @@ const styles = StyleSheet.create({
     width: 70,
     height: 70,
     borderRadius: 35,
+  },
+  imageBorder: {
+    width: 80,
+    height: 80,
+    borderRadius: 40,
     marginRight: 10,
     borderWidth: 3,
-    borderColor: colors.white,
+    borderColor: "#CFCFCF",
+    borderEndWidth: 2,
+    borderBottomWidth: 2,
+    borderTopWidth: 2,
+    borderStartWidth: 2,
+    justifyContent: "center",
+    alignItems: "center",
   },
   title: {
     fontWeight: "800",
@@ -68,6 +84,17 @@ const styles = StyleSheet.create({
   },
   chevronIcon: {
     justifyContent: "flex-end",
+  },
+  redCircle: {
+    width: 10,
+    height: 10,
+    backgroundColor: "red",
+    borderRadius: 5,
+    alignSelf: "flex-end",
+    position: "absolute",
+    right: 10,
+    bottom: 3,
+    flex: 1,
   },
 });
 
