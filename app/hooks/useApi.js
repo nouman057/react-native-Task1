@@ -1,14 +1,20 @@
-import { useState } from "react";
+import React from "react";
 
-export default useApi = (apiFunc) => {
-  const [data, setData] = useState([]);
-  const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [fetched, setFetched] = useState(false);
-  const [val, setVal] = useState(1);
-  const [newData, setNewData] = useState([]);
+class UseApi extends React.Component {
+  constructor(props) {
+    super(props);
 
-  function getUnique(arr, index) {
+    this.state = {
+      data: [],
+      error: false,
+      loading: false,
+      fetched: false,
+      val: 1,
+      newData: [],
+    };
+  }
+
+  getUnique(arr, index) {
     const unique = arr
       .map((e) => e[index])
       .map((e, i, final) => final.indexOf(e) === i && i)
@@ -19,32 +25,38 @@ export default useApi = (apiFunc) => {
     return unique;
   }
 
-  const request = async (...args) => {
-    setLoading(true);
-    const response = await apiFunc(...args);
-    setLoading(false);
-    if (!response.ok) return setError(true);
+  request = async (...args) => {
+    this.setState({ loading: true });
 
-    setError(false);
+    const response = await this.props(...args);
+    this.setState({ loading: false });
 
-    if (val === 1) {
-      setData([]);
-      setNewData([]);
-      console.log("before setting data: " + val);
-      setData(response.data.items);
-      setNewData(response.data.items);
-      setVal(val + 1);
+    if (!response.ok) return this.setState({ error: true });
+
+    if (this.state.val === 1) {
+      this.setState({ data: [], newData: [] });
+
+      console.log("before setting data: " + this.state.val);
+
+      this.setState({
+        data: response.data.items,
+        newData: response.data.items,
+        val: this.state.val + 1,
+      });
+
+      console.log("data object: " + this.state.data);
     } else {
-      console.log("setting data: " + val);
+      console.log("setting data: " + this.state.val);
 
-      setNewData(newData.concat(response.data.items));
-
-      setData(getUnique(newData, "id"));
-
-      //setData(data.push.prototype(...response.data.items));
+      this.setState({
+        newData: this.state.newData.concat(response.data.items),
+        data: this.getUnique(newData, "id"),
+      });
     }
-    setFetched(true);
+    this.setState({ fetched: true });
   };
 
-  return { data, setData, error, loading, request, fetched, setVal };
-};
+  render() {}
+}
+// const b = new UseApi();
+export default UseApi;

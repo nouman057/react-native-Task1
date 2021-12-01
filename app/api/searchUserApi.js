@@ -2,9 +2,10 @@ import client from "./searchApiClient";
 
 const endpoint = "/users?q=h&page=";
 
-const searchUser = (username, page) =>
-  client.get(
-    "/users?q={username}&page={page}&per_page=20",
+const searchUser = (username, page) => {
+  console.log(page);
+  return client.get(
+    `/users?q=${username}&page=${page}&per_page=7`,
     {
       q: username,
       page: page,
@@ -16,5 +17,6 @@ const searchUser = (username, page) =>
     //   },
     // }
   );
+};
 
 export default { searchUser };

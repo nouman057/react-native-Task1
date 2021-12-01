@@ -22,6 +22,7 @@ function AppBarComponent({
           style={{ width: 200 }}
           onChangeText={onChangeText}
           onPressIn={pressedIn}
+          autoFocus
         />
       ) : (
         textHeader
