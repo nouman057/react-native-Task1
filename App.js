@@ -1,6 +1,12 @@
 import React from "react";
-import TaskScreen from "./app/TaskScreen";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import UserDetailScreen from "./app/classes/userDetailScreen";
+import ScreenNavigation from "./app/navigation/screenNavigation";
 
-export default function App() {
-  return <TaskScreen />;
+class App extends React.Component {
+  render() {
+    return <ScreenNavigation />;
+  }
 }
+
+export default App;

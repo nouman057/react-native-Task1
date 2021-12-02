@@ -16,9 +16,7 @@ const styles = StyleSheet.create({
     paddingBottom: 50,
     flex: 1,
   },
-  view: {
-    flex: 1,
-  },
+  view: {},
 });
 
 export default Screen;
