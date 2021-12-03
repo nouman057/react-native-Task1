@@ -10,7 +10,6 @@ import AppButton from "../components/AppButton";
 import colors from "../components/colors";
 import UseApi from "../hooks/useApi";
 import BottomBar from "../components/bottomBar";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 class Task extends React.Component {
   constructor(props) {

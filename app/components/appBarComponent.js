@@ -1,6 +1,6 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
-import { TextInput } from "react-native-gesture-handler";
+import { View, StyleSheet, TextInput } from "react-native";
+// import { TextInput } from "react-native-gesture-handler";
 import colors from "./colors";
 import IconButton from "./iconButton";
 import TextComponent from "./textComponent";
@@ -24,9 +24,7 @@ function AppBarComponent({
           onPressIn={pressedIn}
           autoFocus
         />
-      ) : (
-        textHeader
-      )}
+      ) : null}
       <IconButton title="magnify" color={colors.medium} onPress={onPress} />
     </View>
   );
